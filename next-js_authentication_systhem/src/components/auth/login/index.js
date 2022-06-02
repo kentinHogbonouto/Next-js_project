@@ -6,13 +6,13 @@ const Login = () => {
     return (
       <>
         <h1>Hello world</h1>
-        <button onClick={signOut()}>Sign out</button>
+        <button onClick={() => signOut()}>Sign out</button>
       </>
     );
   }
   return (
     <>
-      <button onClick={signIn()}>Sign in</button>
+      <button onClick={() => signIn()}>Sign in</button>
     </>
   );
 };
