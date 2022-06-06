@@ -6,12 +6,14 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 const Home = () => {
   const {data: session} = useSession();
-  const {push} = useRouter();
+  const {push, asPath} = useRouter();
 
   const handleSignOut = async () => {
     const signOutRedirect = await signOut({redirect: false, callbackUrl: '/auth/registration/'});
     push(signOutRedirect.url)
   } 
+
+  const handleSignIn = () => push(`/auth/login/sign-in?callbackurl=${asPath}`)
 
   return(
     <div className="d-flex flex-column justify-content-center align-items-center sign-container">
@@ -24,7 +26,7 @@ const Home = () => {
         </>: 
         <>
           <h1>Sign in</h1>
-          <button onClick={signIn} className="btn btn-primary">Sign in right now</button>
+          <button onClick={handleSignIn} className="btn btn-primary">Sign in right now</button>
         </>
       }
     </div>
