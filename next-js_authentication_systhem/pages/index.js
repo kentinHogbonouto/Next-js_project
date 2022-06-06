@@ -1,6 +1,9 @@
 import React, {Fragment} from "react"
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from "next/router";
+
+import "bootstrap/dist/css/bootstrap.min.css"
+
 const Home = () => {
   const {data: session} = useSession();
   const {push} = useRouter();
@@ -11,8 +14,7 @@ const Home = () => {
   } 
 
   return(
-    <React.Fragment>
-      <h1>Welcome to my website</h1>
+    <div className="d-flex flex-column justify-content-center align-items-center sign-container">
       {console.log(session)}
       {
         session ? 
@@ -21,11 +23,11 @@ const Home = () => {
           <button onClick={handleSignOut}>Sign out</button>
         </>: 
         <>
-          <h1>Not sign in yet</h1>
-          <button onClick={signIn}>Sign in right now</button>
+          <h1>Sign in</h1>
+          <button onClick={signIn} className="btn btn-primary">Sign in right now</button>
         </>
       }
-    </React.Fragment>
+    </div>
   )
 }
 export default Home

@@ -1,9 +1,12 @@
-import { SessionProvider } from "next-auth/react"
+import { SessionProvider } from "next-auth/react";
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <div>
+        <Component {...pageProps} />
+      </div>
     </SessionProvider>
   )
 }
