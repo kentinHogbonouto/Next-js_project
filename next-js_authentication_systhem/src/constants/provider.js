@@ -1,24 +1,26 @@
+import { BsGithub, BsFacebook, BsMedium, BsTwitter } from "react-icons/bs";
+
 const providers = [
   {
     id: 1,
     name: "github",
-    icon: "BsGithub",
+    Icon: BsGithub,
   },
   {
     id: 2,
     name: "twitter",
-    icon: "BsTwitter",
+    Icon: BsTwitter,
   },
   {
     id: 3,
     name: "facebook",
-    icon: "BsFacebook",
+    Icon: BsFacebook,
   },
   {
     id: 4,
     name: "medium",
-    icon: "BsMedium",
+    Icon: BsMedium,
   },
 ];
 
-export default providers
+export default providers;
