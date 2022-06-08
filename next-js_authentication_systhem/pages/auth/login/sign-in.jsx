@@ -2,10 +2,11 @@ import react from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import providers from "../../../src/constants/provider";
+import { signIn } from "next-auth/react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const signIn = () => {
+const SignIn = () => {
   const { push } = useRouter();
   const { data: session, status } = useSession();
 
@@ -18,6 +19,8 @@ const signIn = () => {
     return <span>dashboard component</span>;
   }
 
+  const handleAuthSignIn = (provider) => () => signIn(provider);
+
   return (
     <div className="container-fluid sign-container">
       <div className="row sign-container">
@@ -26,7 +29,7 @@ const signIn = () => {
         </div>
         <div className="col-lg-4 d-flex flex-column justify-content-center align-items-center">
           {providers.map(({ name, Icon, id }) => (
-            <button type="button" key={id} className="btn">
+            <button type="button" key={id} className="btn" onClick={handleAuthSignIn(name)}>
               <Icon />
               <span>Sign in with {name}</span>
             </button>
@@ -37,4 +40,4 @@ const signIn = () => {
   );
 };
 
-export default signIn;
+export default SignIn;
